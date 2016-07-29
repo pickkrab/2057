@@ -1,29 +1,29 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Scanner;
 
 public class Solution {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int a = Integer.parseInt(reader.readLine());
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
 
         Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
 
         for (int i = 0; i < a; i++) {
-            int b = Integer.parseInt(reader.readLine());
+            int b = scanner.nextInt();
             if (b == 1) {
-                int o = Integer.parseInt(reader.readLine());
+                int o = scanner.nextInt();
                 if (m.containsKey(o)) {
                     for (Map.Entry<Integer, Integer> entry : m.entrySet()) {
                         if (entry.getKey() == o) {
                             m.put(o, entry.getValue() + 1);
                         }
                     }
-                } else {
+                }
+                if (!(m.containsKey(o))) {
                     m.put(o, 1);
                 }
             }
@@ -50,7 +50,9 @@ public class Solution {
 
                 }
             }
-
+            if (b != 1 && b!= 2) {
+                break;
+            }
         }
     }
 }
